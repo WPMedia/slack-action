@@ -38,6 +38,12 @@ export GITHUB_PACKAGE_TOKEN
 
 cd /tmp
 npm config set '//npm.pkg.github.com/:_authToken' '${GITHUB_PACKAGE_TOKEN}'
+
+echo "---"
+echo "PWD" "'$PWD'"
+ls -l
+echo "---"
+
 npm install --registry https://npm.pkg.github.com ${package}
 
 mkdir -p ${install_directory}

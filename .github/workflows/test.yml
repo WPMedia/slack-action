@@ -9,7 +9,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
-    - uses: ./
+    #- uses: ./
+    #  with:
+    #    token: ${{ secrets.SLACK_BOT_TOKEN }}
+    #    payload: '{ "channel": "#post-unleashed-ops", "text": "Slack message test for `${{ github.repository }}@${{ github.sha }}` " }'
+  # test action works running with actions/checkout@v2
+  test-publish:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Checkout Git-Version
+      uses: ./.github/actions/github-private-action
       with:
-        token: ${{ secrets.SLACK_BOT_TOKEN }}
-        payload: '{ "channel": "#post-unleashed-ops", "text": "Slack message test for `${{ github.repository }}@${{ github.sha }}` " }'
+        package: '@wpmedia/git-version-action@0.1.9'
+        token: ${{ secrets.GITHUB_PACKAGE_TOKEN }}
+    - name: Get Git Metadata
+      uses: ./.gh-private-actions/@wpmedia/git-version-action
