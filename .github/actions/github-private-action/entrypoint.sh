@@ -38,6 +38,7 @@ export GITHUB_PACKAGE_TOKEN
 
 cd /tmp
 npm config set '//npm.pkg.github.com/:_authToken' '${GITHUB_PACKAGE_TOKEN}'
+npm config set '@wpmedia:registry' 'npm.pkg.github.com'
 
 echo "---"
 echo "PWD" "'$PWD'"
@@ -45,7 +46,7 @@ ls -l
 echo "---"
 npm ls
 
-npm install --registry https://npm.pkg.github.com ${package}
+npm install ${package}
 
 mkdir -p ${install_directory}
 cp -R node_modules/* ${install_directory}
