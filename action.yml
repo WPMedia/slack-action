@@ -1,0 +1,8 @@
+name: 'Git Version'
+description: 'Output a deterministic semantic version'
+outputs:
+  slack_token:
+  payload:
+runs:
+  using: 'node12'
+  main: 'dist/index.js'

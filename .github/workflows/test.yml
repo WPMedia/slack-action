@@ -1,0 +1,22 @@
+name: "units-test"
+on:
+  pull_request:
+  push:
+
+jobs:
+  # test action works running with actions/checkout@v2
+  test-v2:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Checkout Git-Version
+      uses: ./.github/actions/github-private-action
+      with:
+        package: '@wpmedia/git-version-action@0.1.9'
+        token: ${{ secrets.GITHUB_PACKAGE_TOKEN }}
+    - name: Get Git Metadata
+      uses: ./.gh-private-actions/@wpmedia/git-version-action
+    - uses: ./
+      with:
+        token: ${{ secrets.SLACK_BOT_TOKEN }}
+        payload: '{ "channel": "#pun-unleashed-ops", text: "Test for `${{ steps.get-git-metadata.outputs.git_version }}` of `${{ github.repository }}`" }'
