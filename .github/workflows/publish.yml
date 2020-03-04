@@ -24,7 +24,7 @@ jobs:
         PACKAGE_VERSION: ${{steps.git_metadata.outputs.git_version}}
       run: |
         npm install
-        npm version ${PACKAGE_VERSION}
+        npm version --allow-same-version ${PACKAGE_VERSION}
         npm run package
     - name: Publish
       env:
