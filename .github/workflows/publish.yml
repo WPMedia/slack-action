@@ -5,7 +5,6 @@ on:
       - v*
 
 jobs:
-  # unit tests
   github-packages:
     name: Publish Github Packages
     runs-on: ubuntu-latest

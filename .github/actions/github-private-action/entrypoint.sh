@@ -4,13 +4,13 @@
 #
 set -e
 
-package=$1
+package_name=$1
 directory=$2
 token=$3
 
 usage() {
   echo "entrypoint.sh package_name directory token"
-  echo "  package - Github package name"
+  echo "  package_name - Github package name"
   echo "  directory - directory to install package"
   echo "  token - Github Access Token with permissions for Github Packages"
 }
@@ -25,7 +25,7 @@ test_param() {
   fi
 }
 
-test_param "package" "${package}"
+test_param "package_name" "${package_name}"
 test_param "directory" "${directory}"
 test_param "token" "${token}"
 
@@ -37,10 +37,6 @@ GITHUB_PACKAGE_TOKEN=${token}
 export GITHUB_PACKAGE_TOKEN
 
 mkdir -p ${install_directory} && cd ${install_directory}
-echo '@wpmedia:registry=https://npm.pkg.github.com' >> .npmrc
-echo '//npm.pkg.github.com/:_authToken=${GITHUB_PACKAGE_TOKEN}' >> .npmrc
-cat .npmrc
-npm install ${package}
+npm config set '//npm.pkg.github.com/:_authToken' '${GITHUB_PACKAGE_TOKEN}'
+npm install --registry https://npm.pkg.github.com ${package_name}
 cp -R node_modules/* ${install_directory}
-
-echo "install_directory" $(ls -l ${install_directory})
