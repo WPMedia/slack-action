@@ -1,6 +1,6 @@
 {
   "name": "@wpmedia/slack-action",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "description": "This GitHub action wraps the Slack [chat.postMessage](https://api.slack.com/methods/chat.postMessage) API method for posting to channels, private groups, and DMs. This action sends messages using [Slack bot tokens](https://api.slack.com/docs/token-types)",
   "main": "index.js",
   "scripts": {
