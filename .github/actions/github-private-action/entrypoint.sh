@@ -36,6 +36,7 @@ install_directory=${GITHUB_WORKSPACE}/${directory}
 GITHUB_PACKAGE_TOKEN=${token}
 export GITHUB_PACKAGE_TOKEN
 
+cd /tmp
 npm config set '//npm.pkg.github.com/:_authToken' '${GITHUB_PACKAGE_TOKEN}'
 npm install --registry https://npm.pkg.github.com ${package}
 
