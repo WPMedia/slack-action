@@ -36,5 +36,5 @@ jobs:
       uses: ./
       with:
         token: ${{ secrets.SLACK_BOT_TOKEN }}
-        payload: '{ "channel": "#pun-unleashed-ops", "text": "Build `${{ github.repository }}@${{ steps.get-git-metadata.outputs.git_version }}` was successful" }'
+        payload: '{ "channel": "#post-unleashed-ops", "text": "Build `${{ github.repository }}@${{ steps.get-git-metadata.outputs.git_version }}` was successful" }'
 
