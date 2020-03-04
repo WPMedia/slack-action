@@ -43,7 +43,7 @@ echo "---"
 echo "PWD" "'$PWD'"
 ls -l
 echo "---"
-npm config list
+npm ls
 
 npm install --registry https://npm.pkg.github.com ${package}
 
