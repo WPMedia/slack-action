@@ -25,7 +25,7 @@ test_param() {
   fi
 }
 
-test_param "package" "${package_name}"
+test_param "package" "${package}"
 test_param "directory" "${directory}"
 test_param "token" "${token}"
 
