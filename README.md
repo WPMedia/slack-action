@@ -1,6 +1,6 @@
 # Post Slack messages
 
-This action wraps the Slack [chat.postMessage](https://api.slack.com/methods/chat.postMessage) API method for posting to channels, private groups, and DMs. This action sends messages using [Slack bot tokens](https://api.slack.com/docs/token-types), which have two main advantages compared to user tokens and incoming webhooks: (1) Bots can't be disabled inadvertently when a Slack user is disabled or removed. Slack has written about this in a [recent announcement](https://medium.com/slack-developer-blog/the-latest-with-app-tokens-fe878d44130c), and (2) Bots offer a [powerful range of capabilities](https://api.slack.com/bot-users) that can be leveraged to perform more functions.
+This action wraps the Slack [chat.postMessage](https://api.slack.com/methods/chat.postMessage) API method for posting to channels, private groups, and DMs. This action sends messages using [Slack bot tokens](https://api.slack.com/docs/token-types).
 
 ## Usage:
 
@@ -9,7 +9,7 @@ This action wraps the Slack [chat.postMessage](https://api.slack.com/methods/cha
   uses: wpmedia/slack-action@master
   with:
     token: ${{ secrets.SLACK_BOT_TOKEN }}
-    payload: '{\"channel\":\"C1234567890\",\"text\":\"Hello world\"}'
+    payload: '{ "channel": "#my-channel", "text": "Hello World" }'
 ```
 
 ## Setup
@@ -36,7 +36,7 @@ Slack's [chat.postMessage](https://api.slack.com/methods/chat.postMessage) metho
   uses: wpmedia/slack-action@master
   with:
     token: ${{ secrets.SLACK_BOT_TOKEN }}
-    payload: '{\"channel\":\"C1234567890\",\"text\":\"Hello world\"}'
+    payload: '{ "channel": "#my-channel", "text": "Hello World" }'
 ```
 
 Please note that if you are using the visual editor you should not escape quotes because GitHub will automatically escape them for you.
@@ -57,8 +57,4 @@ If the channel is private, you'll need to install the App in that channel.
 
 #### Formatting messages
 
-Please refer to [Slack's documentation](https://api.slack.com/docs/messages) on message formatting. They also have a [message builder](https://api.slack.com/docs/messages/builder) that's great for playing around and previewing messages. Your messages can contain attachments, markdown, buttons, and more.
-
-## License
-
-The Dockerfile and associated scripts and documentation in this project are released under the [MIT License](LICENSE).
+Please refer to [Slack's documentation](https://api.slack.com/docs/messages) on message formatting. They also have a [message builder](https://api.slack.com/tools/block-kit-builder?mode=message) (or the older [attachements message builder](https://api.slack.com/docs/messages/builder)) that's great for playing around and previewing messages.

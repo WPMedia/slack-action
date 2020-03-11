@@ -1,5 +1,5 @@
-name: 'Git Version'
-description: 'Output a deterministic semantic version'
+name: 'Slack'
+description: 'This GitHub action wraps the Slack API method for posting to channels, private groups, and DMs.'
 outputs:
   slack_token:
   payload:
