@@ -6,7 +6,7 @@ This action wraps the Slack [chat.postMessage](https://api.slack.com/methods/cha
 
 ```yaml
 - name: Notify slack
-  uses: wpmedia/slack-action@master
+  uses: WPMedia/slack-action@v1
   with:
     token: ${{ secrets.SLACK_BOT_TOKEN }}
     payload: '{ "channel": "#my-channel", "text": "Hello World" }'
@@ -33,7 +33,7 @@ Slack's [chat.postMessage](https://api.slack.com/methods/chat.postMessage) metho
 
 ```yaml
 - name: Notify slack
-  uses: wpmedia/slack-action@master
+  uses: WPMedia/slack-action@v1
   with:
     token: ${{ secrets.SLACK_BOT_TOKEN }}
     payload: '{ "channel": "#my-channel", "text": "Hello World" }'
