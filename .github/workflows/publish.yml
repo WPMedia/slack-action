@@ -13,11 +13,11 @@ jobs:
       uses: actions/checkout@v1
     - id: metadata
       name: Get Git Metadata
-      uses: .WPMedia/git-version-action
+      uses: WPMedia/git-version-action@v1
     - name: Slack Notify
       if: success()
       uses: ./
       with:
         token: ${{ secrets.SLACK_BOT_TOKEN }}
-        payload: '{ "channel": "#publishing-tools-ops", "text": "Build `${{ github.repository }}@${{ steps.git_metadata.outputs.git_version }}` was successful" }'
+        payload: '{ "channel": "#publishing-tools-ops", "text": "Build `${{ github.repository }}@${{ steps.metadata.outputs.git_version }}` was successful" }'
 
