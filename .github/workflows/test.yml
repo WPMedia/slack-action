@@ -12,4 +12,4 @@ jobs:
     - uses: ./
       with:
         token: ${{ secrets.SLACK_BOT_TOKEN }}
-        payload: '{ "channel": "#post-unleashed-ops", "text": "Slack message test for `${{ github.repository }}@${{ github.sha }}` " }'
+        payload: '{ "channel": "#publishing-tools-ops", "text": "Slack message test for `${{ github.repository }}@${{ github.sha }}` " }'

@@ -11,32 +11,13 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v1
-    - name: Checkout Git-Version
-      uses: ./.github/actions/github-private-action
-      with:
-        package: '@wpmedia/git-version-action@0.1.9'
-        token: ${{ secrets.GITHUB_PACKAGE_TOKEN }}
-    - id: git_metadata
+    - id: metadata
       name: Get Git Metadata
-      uses: ./.gh-private-actions/@wpmedia/git-version-action
-    - name: Package
-      env:
-        PACKAGE_VERSION: ${{steps.git_metadata.outputs.git_version}}
-      run: |
-        project_version=$(node -e "console.log(require('./package.json').version);")
-        if test "$project_version" != "$PACKAGE_VERSION"; then echo "ERROR: '$project_version' != '$PACKAGE_VERSION'" && exit 1; fi
-        npm install
-        npm run package
-    - name: Publish
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      run: |
-        npm config set '//npm.pkg.github.com/:_authToken' '${GITHUB_TOKEN}'
-        npm publish --registry https://npm.pkg.github.com
+      uses: .WPMedia/git-version-action
     - name: Slack Notify
       if: success()
       uses: ./
       with:
         token: ${{ secrets.SLACK_BOT_TOKEN }}
-        payload: '{ "channel": "#post-unleashed-ops", "text": "Build `${{ github.repository }}@${{ steps.git_metadata.outputs.git_version }}` was successful" }'
+        payload: '{ "channel": "#publishing-tools-ops", "text": "Build `${{ github.repository }}@${{ steps.git_metadata.outputs.git_version }}` was successful" }'
 
