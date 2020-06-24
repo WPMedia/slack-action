@@ -19,7 +19,7 @@ test('test runs', () => {
         const ip = path.join(__dirname, 'index.js');
         console.log(cp.execSync(`node ${ip}`, { env, stdio: 'inherit' }).toString());
     } catch(err) {
-        console.log(err.error);
+        console.log(err.error, err);
         throw err;
     }
 })
