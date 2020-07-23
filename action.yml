@@ -1,8 +1,10 @@
 name: 'Slack'
 description: 'This GitHub action wraps the Slack API method for posting to channels, private groups, and DMs.'
-outputs:
-  slack_token:
+inputs:
+  token:
+    required: true
   payload:
+    required: true
 runs:
   using: 'node12'
   main: 'dist/index.js'

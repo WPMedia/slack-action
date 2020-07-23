@@ -9,7 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
+    - id: metadata
+      name: Get Git Metadata
+      uses: WPMedia/git-version-action@v1
     - uses: ./
       with:
         token: ${{ secrets.SLACK_BOT_TOKEN }}
-        payload: '{ "channel": "#publishing-tools-ops", "text": "Slack message test for `${{ github.repository }}@${{ github.sha }}` " }'
+        payload: '{ "channel": "#publishing-tools-ops", "text": "Slack message test for `${{ github.repository }}@${{ steps.metadata.outputs.git_version }}` " }'
