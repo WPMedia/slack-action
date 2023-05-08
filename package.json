@@ -25,7 +25,7 @@
   "homepage": "https://github.com/WPMedia/slack-action#readme",
   "dependencies": {
     "@actions/core": "^1.2.4",
-    "@slack/web-api": "^5.10.0",
+    "@slack/web-api": "^5.15.0",
     "@zeit/ncc": "^0.22.3",
     "jest": "^26.1.0"
   },
